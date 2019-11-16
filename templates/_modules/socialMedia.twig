@@ -1,0 +1,4 @@
+{% set asset = module.image.one() %}
+<a href="{{ module.linkUrl }}">
+    <img src="{{ asset.url }}" alt="{{ module.linkName }}" />
+</a>

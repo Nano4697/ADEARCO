@@ -1,0 +1,57 @@
+<footer class="col-12">
+    <div class="container row justify-content-center pt-4">
+        <div class="row col-3 ml-5">
+            CONTÁCTANOS
+            <div class="ml-5">
+                <p>
+                    +506 8801 5562 <br />
+                    juntadirectiva@adearco.org <br />
+                    Polideportivo de José María Zeledón <br />
+                    Curridabat - San José
+                </p>
+            </div>
+        </div>
+
+        <div class="row col-3 ml-5">
+            SERVICIOS
+            <div class="ml-5">
+                <p>
+                    {% for module in entry.navbarlinks.all() %}
+                    <a href="/www.adearco.org/{{ module.navbarEntry | lower }}">
+                        {% include "_modules/" ~ module.type %}
+                    </a>
+                    <br />
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+
+        <div class="row col-3 ml-5">
+            ENLACES
+            <div class="ml-5">
+                <p>
+                    {% for module in entry.links.all() %} {% include "_modules/"
+                    ~ module.type %} {% endfor %}
+                </p>
+            </div>
+        </div>
+
+        <div class="row col-1 ml-5">
+            {% for module in entry.socialMedia.all() %} {% include "_modules/" ~
+            module.type %} {% endfor %}
+        </div>
+    </div>
+
+    <div class="pb-3">
+        Icons made by
+        <a
+            href="https://www.flaticon.com/authors/pixel-perfect"
+            title="Pixel perfect"
+            >Pixel perfect</a
+        >
+        from
+        <a href="https://www.flaticon.com/" title="Flaticon"
+            >www.flaticon.com</a
+        >
+    </div>
+</footer>

@@ -1,0 +1,9 @@
+footer {
+    background: rgba(220, 56, 55, 1);
+    font-size: 0.75rem;
+}
+
+footer img {
+    width: 30px;
+    height: 30px;
+}
