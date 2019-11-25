@@ -1,8 +1,8 @@
 <footer class="col-12">
     <div class="container row justify-content-center pt-4">
-        <div class="row col-3 ml-5">
+        <div class="row col-4  ml-4">
             CONTÁCTANOS
-            <div class="ml-5">
+            <div class="ml-4">
                 <p>
                     +506 8801 5562 <br />
                     juntadirectiva@adearco.org <br />
@@ -12,9 +12,9 @@
             </div>
         </div>
 
-        <div class="row col-3 ml-5">
+        <div class="row col-3 ml-4">
             SERVICIOS
-            <div class="ml-5">
+            <div class="ml-4">
                 <p>
                     {% for module in entry.navbarlinks.all() %}
                     <a href="/www.adearco.org/{{ module.navbarEntry | lower }}">
@@ -26,9 +26,9 @@
             </div>
         </div>
 
-        <div class="row col-3 ml-5">
+        <div class="row col-3 ml-4">
             ENLACES
-            <div class="ml-5">
+            <div class="ml-4">
                 <p>
                     {% for module in entry.links.all() %} {% include "_modules/"
                     ~ module.type %} {% endfor %}
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div class="row col-1 ml-5">
+        <div class="row col-auto ml-4">
             {% for module in entry.socialMedia.all() %} {% include "_modules/" ~
             module.type %} {% endfor %}
         </div>

@@ -13,6 +13,10 @@
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous"
         />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+        />
         <link rel="stylesheet" type="text/css" href="styles/index.css" />
         <link rel="stylesheet" type="text/css" href="styles/footer.css" />
         <title>Inicio</title>
@@ -103,14 +107,79 @@
                     </p>
                     <a href="">
                         <button type="button" class="btn btn-primary">
-                            Primary
+                            Ver más
                         </button>
                     </a>
                 </div>
             </div>
         </div>
 
+        <h2 class="mt-4 ml-5 pl-5">Próximos eventos</h2>
+        <div class="container justify-content-center">
+            <div class="carousel mt-3 mb-5" data-flickity='{ "contain": true }'>
+                <div class="carousel-cell col-5">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">
+                                Some quick example text to build on the card
+                                title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-cell col-5">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">
+                                Some quick example text to build on the card
+                                title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-cell col-5">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">
+                                Some quick example text to build on the card
+                                title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-cell col-5">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">
+                                Some quick example text to build on the card
+                                title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {% include 'footer.twig' %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
         <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
