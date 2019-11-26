@@ -103,7 +103,7 @@
                         <b>{{ entry.welcomeTitle }}</b>
                     </h1>
                     <p>
-                        <b>{{ entry.welcomeMessage }}</b>
+                        {{ entry.welcomeMessage }}
                     </p>
                     <a href="">
                         <button type="button" class="btn btn-primary">
@@ -116,63 +116,94 @@
 
         <h2 class="mt-4 ml-5 pl-5">Próximos eventos</h2>
         <div class="container justify-content-center">
-            <div class="carousel mt-3 mb-5" data-flickity='{ "contain": true }'>
-                <div class="carousel-cell col-5">
+            <div
+                class="carousel mt-3 mb-5"
+                data-flickity='{ "cellAlign": "center" }'
+            >
+                {% set start = now|atom %} {% set eventEntries =
+                craft.entries.section('eventos').eventDate(">= #{start}").all()
+                %} {% if not eventEntries|length %}
+                <div class="carousel-cell col-lg-5 col-10">
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="..." />
+                        <img
+                            class="card-img-top no-events-img mx-auto"
+                            src="/resources/archery.png"
+                            alt=""
+                        />
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">
+                                Aún estamos armando las pacas
+                            </h5>
                             <p class="card-text">
-                                Some quick example text to build on the card
-                                title and make up the bulk of the card's
-                                content.
+                                Vuelve pronto para conocer sobre nuestras
+                                próximas actividades.
                             </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-cell col-5">
+                {% else %} {% for entry in eventEntries %}
+                <div class="carousel-cell col-lg-5 col-md-10">
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="..." />
+                        {% if entry.eventImage|length %}
+                        <img
+                            src="{{ entry.eventImage.one().getUrl() }}"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        {% endif %}
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">{{ entry.title }}</h5>
                             <p class="card-text">
-                                Some quick example text to build on the card
-                                title and make up the bulk of the card's
-                                content.
+                                {{ entry.eventDescription }}
                             </p>
+                            {#
                             <a href="#" class="btn btn-primary">Go somewhere</a>
+                            #}
+                        </div>
+                        <div class="card-footer">
+                            <div class="container ">
+                                <div class="row justify-content-between">
+                                    <div class="col-7 ml-0 pl-0">
+                                        <div class="row justify-content-start">
+                                            <div class="col-1">
+                                                <img
+                                                    class="card-footer-img"
+                                                    src="/resources/placeholder.png"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div
+                                                class="card-footer-text col-10 pl-0"
+                                            >
+                                                {{ entry.eventLocation }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 mr-0 pr-0">
+                                        <div class="row justify-content-end">
+                                            {% if entry.eventDate %}
+
+                                            <div class="col-1">
+                                                <img
+                                                    class="card-footer-img"
+                                                    src="/resources/calendar.png"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div
+                                                class="card-footer-text col-auto pl-0"
+                                            >
+                                                {{ entry.eventDate |date('medium', locale='es')}}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-cell col-5">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card
-                                title and make up the bulk of the card's
-                                content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-cell col-5">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card
-                                title and make up the bulk of the card's
-                                content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %} {% endif %}
             </div>
         </div>
 

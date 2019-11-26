@@ -25,6 +25,7 @@ div.welcome > div.container > div.text {
 div.text > p {
     font-size: 1.3rem;
     line-height: 1.5rem;
+    font-weight: bold;
 }
 
 div.text > button {
@@ -38,9 +39,64 @@ div.text > button {
     z-index: 99;
 }
 
+img.card-footer-img {
+    width: 0.8em;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+div.card-footer-text {
+    font-size: 0.8em;
+}
+
+div.card-footer {
+    background-color: white;
+}
+
+img.no-events-img {
+    max-width: 256px;
+    max-height: 256px;
+}
+
+.flickity-button {
+    background: rgb(24, 129, 248);
+}
+.flickity-button:hover {
+    background: #dc3837;
+}
+
+/* icon color */
+.flickity-button-icon {
+    fill: white;
+}
+/* position outside */
+.flickity-prev-next-button.previous {
+    left: -40px;
+}
+.flickity-prev-next-button.next {
+    right: -40px;
+}
+
 @media only screen and (max-width: 768px) {
     div.welcome > div.container {
         position: relative;
         display: block;
+    }
+
+    div.text > p {
+        font-size: 1rem;
+        line-height: 1.2rem;
+        font-weight: normal;
+    }
+
+    /* position outside */
+    .flickity-prev-next-button.previous {
+        left: 0px;
+    }
+    .flickity-prev-next-button.next {
+        right: 0px;
     }
 }
