@@ -1,0 +1,57 @@
+<div class="carousel-cell col-lg-5 col-md-10">
+    <div class="card">
+        {% if entry.eventImage|length %}
+        <img
+            src="{{ entry.eventImage.one().getUrl() }}"
+            class="card-img-top"
+            alt="..."
+        />
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ entry.title }}</h5>
+            <p class="card-text">
+                {{ entry.eventDescription }}
+            </p>
+            {#
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            #}
+        </div>
+        <div class="card-footer">
+            <div class="container ">
+                <div class="row justify-content-between">
+                    <div class="col-7 ml-0 pl-0">
+                        <div class="row justify-content-start">
+                            <div class="col-1">
+                                <img
+                                    class="card-footer-img"
+                                    src="/resources/placeholder.png"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="card-footer-text col-10 pl-0">
+                                {{ entry.eventLocation }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5 mr-0 pr-0">
+                        <div class="row justify-content-end">
+                            {% if entry.eventDate %}
+
+                            <div class="col-1">
+                                <img
+                                    class="card-footer-img"
+                                    src="/resources/calendar.png"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="card-footer-text col-auto pl-0">
+                                {{ entry.eventDate |date('medium', locale='es')}}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,10 @@
 <footer class="col-12">
     <div class="container row justify-content-center pt-4">
-        <div class="row col-4  ml-4">
-            CONTÁCTANOS
-            <div class="ml-4">
+        <div class="row col-lg-4 col-md-6 ml-lg-4 ml-md-0">
+            <div class="col-5">
+                <p>CONTÁCTANOS</p>
+            </div>
+            <div class="col-6 ml-0">
                 <p>
                     +506 8801 5562 <br />
                     juntadirectiva@adearco.org <br />
@@ -12,9 +14,12 @@
             </div>
         </div>
 
-        <div class="row col-3 ml-4">
-            SERVICIOS
-            <div class="ml-4">
+        {#
+        <div class="row col-lg-3 col-md-6 ml-0">
+            <div class="col-5">
+                <p>SERVICIOS</p>
+            </div>
+            <div class="col-6 ml-0">
                 <p>
                     {% for module in entry.navbarlinks.all() %}
                     <a href="/www.adearco.org/{{ module.navbarEntry | lower }}">
@@ -26,9 +31,11 @@
             </div>
         </div>
 
-        <div class="row col-3 ml-4">
-            ENLACES
-            <div class="ml-4">
+        <div class="row col-lg-3 col-md-6 ml-0">
+            <div class="col-5">
+                <p>ENLACES</p>
+            </div>
+            <div class="col-6 ml-0">
                 <p>
                     {% for module in entry.links.all() %} {% include "_modules/"
                     ~ module.type %} {% endfor %}
@@ -36,13 +43,14 @@
             </div>
         </div>
 
-        <div class="row col-auto ml-4">
+        <div class="row justify-content-center col-lg-auto col-md-6 ml-0">
             {% for module in entry.socialMedia.all() %} {% include "_modules/" ~
             module.type %} {% endfor %}
         </div>
+        #}
     </div>
 
-    <div class="pb-3">
+    <div class="ref pb-3 mt-4">
         Icons made by
         <a
             href="https://www.flaticon.com/authors/pixel-perfect"
@@ -59,3 +67,25 @@
         >
     </div>
 </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"
+></script>
+
+</body>
+</html>
