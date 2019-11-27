@@ -1,53 +1,48 @@
 <footer class="col-12">
-    <div class="container row justify-content-center pt-4">
-        <div class="row col-lg-4 col-md-6 ml-lg-4 ml-md-0">
-            <div class="col-5">
+    <div class="container col-auto mx-auto row  pt-4">
+        <div class="row col-lg-4 col-md-6 ml-lg-0 ml-md-0">
+            <div class="col-4">
                 <p>CONTÁCTANOS</p>
             </div>
             <div class="col-6 ml-0">
-                <p>
-                    +506 8801 5562 <br />
-                    juntadirectiva@adearco.org <br />
-                    Polideportivo de José María Zeledón <br />
-                    Curridabat - San José
-                </p>
+                {{ informacionContacto.contactInfo }}
             </div>
         </div>
 
-        {#
         <div class="row col-lg-3 col-md-6 ml-0">
             <div class="col-5">
                 <p>SERVICIOS</p>
             </div>
             <div class="col-6 ml-0">
                 <p>
-                    {% for module in entry.navbarlinks.all() %}
-                    <a href="/www.adearco.org/{{ module.navbarEntry | lower }}">
-                        {% include "_modules/" ~ module.type %}
+                    {% set navPages = craft.entries.section('navbar').all() %}
+                    {% nav entry in navPages %} {% if not entry.hasDescendants()
+                    %} {% set url = entry.sitePageLink.one() %}
+                    <a href="{{ url }}">
+                        {{ entry.title }}
                     </a>
                     <br />
-                    {% endfor %}
+                    {% endif %} {% endnav %}
                 </p>
             </div>
         </div>
 
         <div class="row col-lg-3 col-md-6 ml-0">
-            <div class="col-5">
+            <div class="col-4">
                 <p>ENLACES</p>
             </div>
-            <div class="col-6 ml-0">
+            <div class="col-7 ml-0">
                 <p>
-                    {% for module in entry.links.all() %} {% include "_modules/"
-                    ~ module.type %} {% endfor %}
+                    {% for module in linksExternos.links.all() %} {% include
+                    "_modules/" ~ module.type %} {% endfor %}
                 </p>
             </div>
         </div>
 
         <div class="row justify-content-center col-lg-auto col-md-6 ml-0">
-            {% for module in entry.socialMedia.all() %} {% include "_modules/" ~
-            module.type %} {% endfor %}
+            {% for module in redesSociales.socialMedia.all() %} {% include
+            "_modules/" ~ module.type %} {% endfor %}
         </div>
-        #}
     </div>
 
     <div class="ref pb-3 mt-4">
@@ -86,6 +81,3 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"
 ></script>
-
-</body>
-</html>

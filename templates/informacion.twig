@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shirnk-to-fit=no"
+        />
+        <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+        />
+        <link rel="stylesheet" type="text/css" href="/styles/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/informacion.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/footer.css" />
+
+        {% set title = entry.title %}
+        <title>
+            {% if title is defined %}{{ title }} - {% endif %}{{ siteName }}
+        </title>
+        <link rel="icon" type="image/png" href="/resources/favicon.png" />
+    </head>
+    <body>
+        {% include "navbar.twig" %}
+
+        <div class="container col-12">
+            <div class="row">
+                <div class="sideBar col-3 ml-0 pl-0 pt-5">
+                    <h3>{{ entry.title }}</h3>
+                </div>
+                <div class="col-8">
+                    {% for row in entry.sectionField.all() %}
+                    <h4>{{ row.sectionTitle }}</h4>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        {% include "footer.twig" %}
+    </body>
+</html>

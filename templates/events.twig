@@ -1,61 +1,99 @@
-{% include "navbar.twig" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shirnk-to-fit=no"
+        />
+        <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+        />
+        <link rel="stylesheet" type="text/css" href="/styles/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/index.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/footer.css" />
 
-<h2 class="mt-5 pt-3 mb-5 ml-5 pl-5">Próximos eventos</h2>
-<div class="container justify-content-center">
-    <div class="carousel mt-3 mb-5" data-flickity='{ "cellAlign": "center" }'>
-        {% set start = now|atom %} {% set eventEntriesNext =
-        craft.entries.section('eventoInfo').eventDate(">= #{start}").all() %} {%
-        if not eventEntriesNext|length %}
-        <div class="carousel-cell col-lg-5 col-10">
-            <div class="card">
-                <img
-                    class="card-img-top no-events-img mx-auto"
-                    src="/resources/archery.png"
-                    alt=""
-                />
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Aún estamos armando las pacas
-                    </h5>
-                    <p class="card-text">
-                        Vuelve pronto para conocer sobre nuestras próximas
-                        actividades.
-                    </p>
+        {% set title = entry.title %}
+        <title>
+            {% if title is defined %}{{ title }} - {% endif %}{{ siteName }}
+        </title>
+        <link rel="icon" type="image/png" href="/resources/favicon.png" />
+    </head>
+    <body>
+        {% include "navbar.twig" %}
+
+        <h2 class="mt-5 pt-3 mb-5 ml-5 pl-5">Próximos eventos</h2>
+        <div class="container justify-content-center">
+            <div
+                class="carousel mt-3 mb-5"
+                data-flickity='{ "cellAlign": "center" }'
+            >
+                {% set start = now|atom %} {% set eventEntriesNext =
+                craft.entries.section('eventoInfo').eventDate(">=
+                #{start}").all() %} {% if not eventEntriesNext|length %}
+                <div class="carousel-cell col-lg-5 col-10">
+                    <div class="card">
+                        <img
+                            class="card-img-top no-events-img mx-auto"
+                            src="/resources/archery.png"
+                            alt=""
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Aún estamos armando las pacas
+                            </h5>
+                            <p class="card-text">
+                                Vuelve pronto para conocer sobre nuestras
+                                próximas actividades.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+                {% else %} {% for entry in eventEntriesNext %} {% include
+                "_modules/carousel.twig" %} {% endfor %} {% endif %}
             </div>
         </div>
-        {% else %} {% for entry in eventEntriesNext %} {% include
-        "_modules/carousel.twig" %} {% endfor %} {% endif %}
-    </div>
-</div>
 
-<h2 class="mt-4 pt-3 mb-5 ml-5 pl-5">Eventos anteriores</h2>
-<div class="container justify-content-center">
-    <div class="carousel mt-3 mb-5" data-flickity='{ "cellAlign": "center" }'>
-        {% set eventEntriesOld =
-        craft.entries.section('eventoInfo').eventDate("< #{start}").all() %} {%
-        if not eventEntriesOld|length %}
-        <div class="carousel-cell col-lg-5 col-10">
-            <div class="card">
-                <img
-                    class="card-img-top no-events-img mx-auto"
-                    src="/resources/archery.png"
-                    alt=""
-                />
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Aún estamos armando las pacas
-                    </h5>
-                    <p class="card-text">
-                        Vuelve pronto para conocer sobre nuestras próximas
-                        actividades.
-                    </p>
+        <h2 class="mt-4 pt-3 mb-5 ml-5 pl-5">Eventos anteriores</h2>
+        <div class="container justify-content-center">
+            <div
+                class="carousel mt-3 mb-5"
+                data-flickity='{ "cellAlign": "center" }'
+            >
+                {% set eventEntriesOld =
+                craft.entries.section('eventoInfo').eventDate("<
+                #{start}").all() %} {% if not eventEntriesOld|length %}
+                <div class="carousel-cell col-lg-5 col-10">
+                    <div class="card">
+                        <img
+                            class="card-img-top no-events-img mx-auto"
+                            src="/resources/archery.png"
+                            alt=""
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Aún estamos armando las pacas
+                            </h5>
+                            <p class="card-text">
+                                Vuelve pronto para conocer sobre nuestras
+                                próximas actividades.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+                {% else %} {% for entry in eventEntriesOld %} {% include
+                "_modules/carousel.twig" %} {% endfor %} {% endif %}
             </div>
         </div>
-        {% else %} {% for entry in eventEntriesOld %} {% include
-        "_modules/carousel.twig" %} {% endfor %} {% endif %}
-    </div>
-</div>
 
-{% include 'footer.twig' %}
+        {% include 'footer.twig' %}
+    </body>
+</html>
