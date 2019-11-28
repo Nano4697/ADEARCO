@@ -1,0 +1,19 @@
+div.album {
+    position: relative;
+}
+
+div.album > div.album-overlay {
+    position: absolute;
+    background: rgba(39, 39, 39, 0.7);
+    top: 0px;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+div.album > div.album-overlay > h4 {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}

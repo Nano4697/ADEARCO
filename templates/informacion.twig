@@ -28,17 +28,39 @@
         <link rel="icon" type="image/png" href="/resources/favicon.png" />
     </head>
     <body>
-        {% include "navbar.twig" %}
+        {% include "navbar.twig" %} {% set infoData = entry.sectionField.all()
+        %}
 
         <div class="container col-12">
-            <div class="row">
-                <div class="sideBar col-3 ml-0 pl-0 pt-5">
-                    <h3>{{ entry.title }}</h3>
+            <div class="row ">
+                <div class="sideBar col-3 ml-0 pl-0 py-5">
+                    <div class="ml-5">
+                        <h4 class="col-12 text-break mb-4">
+                            {{ entry.title }}
+                        </h4>
+
+                        {% for row in infoData %}
+                        <h6 class="ml-5 mt-3">
+                            <a class="" href="#{{ row.getId() }}">{{
+                                row.sectionTitle
+                            }}</a>
+                        </h6>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div class="col-8">
-                    {% for row in entry.sectionField.all() %}
-                    <h4>{{ row.sectionTitle }}</h4>
-                    {% endfor %}
+                <div class="col-9 col-3 py-5">
+                    <div class="mx-5">
+                        {% for row in infoData %}
+                        <h4>
+                            <a name="{{ row.getId() }}">{{
+                                row.sectionTitle
+                            }}</a>
+                        </h4>
+                        <div class="px-5 pt-3 pb-4">
+                            {{ row.sectionDescription }}
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

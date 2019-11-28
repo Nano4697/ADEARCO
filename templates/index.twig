@@ -63,9 +63,10 @@
                     class="carousel mt-3 mb-5"
                     data-flickity='{ "cellAlign": "center" }'
                 >
-                    {% set start = now|atom %} {% set eventEntries =
-                    craft.entries.section('eventos').eventDate(">=
-                    #{start}").all() %} {% if not eventEntries|length %}
+                    {% set start = now|atom %} {% set eventEntriesNext =
+                    craft.entries.section('eventoInfo').eventDate(">=
+                    #{start}").orderBy('eventDate asc').all() %} {% if not
+                    eventEntriesNext|length %}
                     <div class="carousel-cell col-lg-5 col-10">
                         <div class="card">
                             <img
@@ -84,8 +85,8 @@
                             </div>
                         </div>
                     </div>
-                    {% else %} {% for entry in eventEntries %} {% include
-                    "_modules/carousel.twig" %} {% endfor %} {% endif %}
+                    {% else %} {% for entry in eventEntriesNext %} {% include
+                    "_modules/eventCarousel.twig" %} {% endfor %} {% endif %}
                 </div>
             </div>
 

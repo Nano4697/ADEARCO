@@ -30,7 +30,14 @@
     <body>
         {% include "navbar.twig" %}
 
-        <h2 class="mt-5 pt-3 mb-5 ml-5 pl-5">Próximos eventos</h2>
+        <div class="justify-content-center text-center">
+            <h2 class="mt-5 pt-3 mb-3 ">Eventos</h2>
+            <h5 class="col-8 mx-auto">
+                {{ entry.descripcion }}
+            </h5>
+        </div>
+
+        <h2 class="mt-5 pt-2 mb-5 ml-5 pl-5">Próximos eventos</h2>
         <div class="container justify-content-center">
             <div
                 class="carousel mt-3 mb-5"
@@ -38,7 +45,8 @@
             >
                 {% set start = now|atom %} {% set eventEntriesNext =
                 craft.entries.section('eventoInfo').eventDate(">=
-                #{start}").all() %} {% if not eventEntriesNext|length %}
+                #{start}").orderBy('eventDate asc').all() %} {% if not
+                eventEntriesNext|length %}
                 <div class="carousel-cell col-lg-5 col-10">
                     <div class="card">
                         <img
@@ -58,7 +66,7 @@
                     </div>
                 </div>
                 {% else %} {% for entry in eventEntriesNext %} {% include
-                "_modules/carousel.twig" %} {% endfor %} {% endif %}
+                "_modules/eventCarousel.twig" %} {% endfor %} {% endif %}
             </div>
         </div>
 
@@ -70,7 +78,8 @@
             >
                 {% set eventEntriesOld =
                 craft.entries.section('eventoInfo').eventDate("<
-                #{start}").all() %} {% if not eventEntriesOld|length %}
+                #{start}").orderBy('eventDate desc').all() %} {% if not
+                eventEntriesOld|length %}
                 <div class="carousel-cell col-lg-5 col-10">
                     <div class="card">
                         <img
@@ -90,7 +99,7 @@
                     </div>
                 </div>
                 {% else %} {% for entry in eventEntriesOld %} {% include
-                "_modules/carousel.twig" %} {% endfor %} {% endif %}
+                "_modules/eventCarousel.twig" %} {% endfor %} {% endif %}
             </div>
         </div>
 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shirnk-to-fit=no"
+        />
+        <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+        />
+        <link rel="stylesheet" type="text/css" href="/styles/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/informacion.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/footer.css" />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/flickity-fullscreen@1/fullscreen.css"
+        />
+
+        {% set title = entry.title %}
+        <title>
+            {% if title is defined %}{{ title }} - {% endif %}{{ siteName }}
+        </title>
+        <link rel="icon" type="image/png" href="/resources/favicon.png" />
+    </head>
+    <body>
+        {% include "navbar.twig" %} {% set albumEntries =
+        craft.entries.section('album').all() %}
+
+        <div class="container col-12">
+            <div class="row ">
+                <div class="sideBar col-lg-3 col-md-12 ml-0 pl-0 py-5">
+                    <div class="ml-5">
+                        <h4 class="col-12 text-break mb-4">
+                            Álbumnes
+                        </h4>
+
+                        {% for album in albumEntries %}
+                        <h6 class="ml-5 mt-3">
+                            <a class="" href="{{ album.getUrl() }}">{{
+                                album.title
+                            }}</a>
+                        </h6>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-12 py-5 ">
+                    <div class="container justify-content-center">
+                        {% set photos = entry.photo.all() %}
+                        <div
+                            class="carousel mb-5 carousel-main"
+                            data-flickity='{ "lazyLoad": 2, "cellAlign": "center", "fullscreen": true}'
+                        >
+                            {% for photo in photos %}
+                            <div class="carousel-cell col-md-12">
+                                <img
+                                    class="col-md-12"
+                                    data-flickity-lazyload="{{
+                                        photo.getUrl('preview')
+                                    }}"
+                                    width="{{ photo.getWidth('preview') }}"
+                                    alt=""
+                                    style="max-height: 600px;"
+                                />
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div
+                            class="carousel carousel-nav d-none d-lg-block"
+                            data-flickity='{ "lazyLoad": 4, "asNavFor": ".carousel-main", "pageDots": false }'
+                        >
+                            {% for photo in photos %}
+                            <div class="carousel-cell col-lg-auto col-md-10">
+                                <img
+                                    class=""
+                                    data-flickity-lazyload="{{
+                                        photo.getUrl('thumbnail')
+                                    }}"
+                                    width="{{ photo.getWidth('thumbnail') }}"
+                                    height="{{ photo.getHeight('thumbnail') }}"
+                                    alt=""
+                                />
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include "footer.twig" %}
+        <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
+    </body>
+</html>
