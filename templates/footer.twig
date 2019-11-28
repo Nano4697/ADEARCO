@@ -1,19 +1,19 @@
 <footer class="col-12">
-    <div class="container col-auto mx-auto row  pt-4">
-        <div class="row col-lg-4 col-md-6 ml-lg-0 ml-md-0">
-            <div class="col-4">
+    <div class="container col-auto mx-auto row  pt-4 justify-content-center">
+        <div class="row col-md-7 col-lg-4 px-0">
+            <div class="col-12 col-md-5">
                 <p>CONTÁCTANOS</p>
             </div>
-            <div class="col-6 ml-0">
+            <div class="content col-12 col-md-6 px-0 ">
                 {{ informacionContacto.contactInfo }}
             </div>
         </div>
 
-        <div class="row col-lg-3 col-md-6 ml-0">
-            <div class="col-5">
+        <div class="row col-md-5 col-lg-3 px-0">
+            <div class="col-6 col-md-5">
                 <p>SERVICIOS</p>
             </div>
-            <div class="col-6 ml-0">
+            <div class="content col-6 col-md-6 px-0">
                 <p>
                     {% set navPages = craft.entries.section('navbar').all() %}
                     {% nav entry in navPages %} {% if not entry.hasDescendants()
@@ -27,11 +27,11 @@
             </div>
         </div>
 
-        <div class="row col-lg-3 col-md-6 ml-0">
-            <div class="col-4">
+        <div class="row col-md-7 col-lg-3 px-0">
+            <div class="col-6 col-md-5">
                 <p>ENLACES</p>
             </div>
-            <div class="col-7 ml-0">
+            <div class="content col-6 col-md-7 px-0">
                 <p>
                     {% for module in linksExternos.links.all() %} {% include
                     "_modules/" ~ module.type %} {% endfor %}
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center col-lg-auto col-md-6 ml-0">
+        <div class="row justify-content-center col-md-5 col-lg-auto px-0">
             {% for module in redesSociales.socialMedia.all() %} {% include
             "_modules/" ~ module.type %} {% endfor %}
         </div>

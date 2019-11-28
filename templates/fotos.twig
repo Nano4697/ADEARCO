@@ -32,7 +32,7 @@
 
         <div class="justify-content-center text-center">
             <h2 class="mt-5 pt-3 mb-3 ">{{ entry.title }}</h2>
-            <h5 class="col-8 mx-auto">
+            <h5 class="col-lg-8 col-md-11 mx-auto">
                 {{ entry.descripcion }}
             </h5>
         </div>
@@ -40,7 +40,7 @@
         <div class="container mt-5 pt-2 mb-5">
             {% set albumEntries = craft.entries.section('album').all() %} {% for
             album in albumEntries %}
-            <div class="album col-3 px-0">
+            <div class="album col-lg-3 col-md-5 px-0">
                 {% set photo = album.photo.one() %}
                 <img class="col-12 px-0" src="{{ photo.getUrl() }}" alt="" />
                 <div class="album-overlay col-12 px-0">

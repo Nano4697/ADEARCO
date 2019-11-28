@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shirnk-to-fit=no"
+        />
+        <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+        />
+        <link rel="stylesheet" type="text/css" href="/styles/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/contacto.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/footer.css" />
+
+        {% set title = entry.title %}
+        <title>
+            {% if title is defined %}{{ title }} - {% endif %}{{ siteName }}
+        </title>
+        <link rel="icon" type="image/png" href="/resources/favicon.png" />
+    </head>
+    <body>
+        {% include "navbar.twig" %}
+
+        <div class="justify-content-center text-center">
+            <h2 class="mt-5 pt-3 mb-3 ">{{ entry.title }}</h2>
+            <h5 class="col-lg-8 col-md-11 mx-auto">
+                {{ entry.descripcion }}
+            </h5>
+        </div>
+
+        <div class="container col-8 mt-5 pt-2 mb-5">
+            <div class="row">
+                <div class="col-8">
+                    <form class="needs-validation" novalidate>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <span
+                                    class="input-group-text"
+                                    id="basic-addon1"
+                                >
+                                    Nombre
+                                </span>
+                            </div>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Nombre completo"
+                                aria-label="Nombre"
+                                aria-describedby="basic-addon1"
+                                required
+                            />
+
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                        <div class="input-group mb-0">
+                            <div class="input-group-prepend">
+                                <span
+                                    class="input-group-text"
+                                    id="basic-addon1"
+                                >
+                                    Correo electrónico
+                                </span>
+                            </div>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                aria-describedby="Correo electronico para respuesta"
+                                placeholder="correo@ejemplo.com"
+                                required
+                            />
+
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted mb-3"
+                            >Este correo se utilizará únicamente para responder
+                            a este mensaje.</small
+                        >
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Mensaje</span>
+                            </div>
+                            <textarea
+                                class="form-control"
+                                aria-label="With textarea"
+                                required
+                            ></textarea>
+
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn btn-primary float-right"
+                        >
+                            Enviar
+                        </button>
+                    </form>
+                </div>
+                <div class="contactSocialNetwork col-4 text-right">
+                    {{ informacionContacto.contactInfo }}
+                    Redes sociales: <br />
+                    <div class="mt-2">
+                        {% for module in redesSociales.socialMedia.all() %} {%
+                        include "_modules/" ~ module.type %} {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function() {
+                "use strict";
+                window.addEventListener(
+                    "load",
+                    function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName(
+                            "needs-validation"
+                        );
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(
+                            forms,
+                            function(form) {
+                                form.addEventListener(
+                                    "submit",
+                                    function(event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add("was-validated");
+                                    },
+                                    false
+                                );
+                            }
+                        );
+                    },
+                    false
+                );
+            })();
+        </script>
+
+        {% include "footer.twig" %}
+    </body>
+</html>
