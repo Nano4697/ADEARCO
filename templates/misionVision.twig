@@ -37,24 +37,41 @@
             </h5>
         </div>
 
-        <div class="row col-10 my-5 mx-auto justify-content-center">
-            <div class="card col-5">
-                <div class="card-body">
-                    <h3 class="card-title text-center">Misión</h3>
-                    <p class="card-text">
-                        {{ entry.mision }}
-                    </p>
+        <div class="container my-5">
+            <div class="row">
+                <div class="container col-8">
+                    <div class="row col-12 my-2 mx-auto justify-content-center">
+                        <div class="card col-12">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">
+                                    Misión
+                                </h3>
+                                <p class="card-text">
+                                    {{ entry.mision }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12 my-2 mx-auto justify-content-center">
+                        <div class="card col-12">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">
+                                    Visión
+                                </h3>
+                                <p class="card-text">
+                                    {{ entry.vision }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card col-5 ml-3">
-                <div class="card-body">
-                    <h3 class="card-title text-center">Visión</h3>
-                    <p class="card-text">
-                        {{ entry.vision }}
-                    </p>
+                <div class="col-4 my-auto">
+                    {% set logo = globalLogo.logo.one() %}
+                    <img class="fluid col-12" src="{{ logo.url }}" alt="" />
                 </div>
             </div>
         </div>
+
         {% include "footer.twig" %}
     </body>
 </html>

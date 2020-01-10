@@ -33,8 +33,8 @@
 
         <div class="container col-12">
             <div class="row ">
-                <div class="sideBar col-3 ml-0 pl-0 py-5">
-                    <div class="ml-5">
+                <div class="sideBar col-lg-3 col-md-4 ml-0 pl-0 py-5">
+                    <div class="ml-4">
                         <h4 class="col-12 text-break mb-4">
                             {{ entry.title }}
                         </h4>
@@ -48,15 +48,15 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-9 col-3 py-5">
-                    <div class="mx-5">
+                <div class="col-lg-9 col-md-8 py-5">
+                    <div class="mx-lg-5 mx-md-3 mx-2">
                         {% for row in infoData %}
                         <h4>
                             <a name="{{ row.getId() }}">{{
                                 row.sectionTitle
                             }}</a>
                         </h4>
-                        <div class="px-5 pt-3 pb-4">
+                        <div class="px-md-5 px-3 pt-3 pb-4">
                             {{ row.sectionDescription }}
                         </div>
                         {% endfor %}

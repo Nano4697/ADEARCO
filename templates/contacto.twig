@@ -45,9 +45,9 @@
         </ul>
         {% endif %} {% endmacro %} {% from _self import errorList %}
 
-        <div class="container col-8 mt-5 pt-2 mb-5">
+        <div class="container col-lg-8 col-10 mt-5 pt-2 mb-5">
             <div class="row">
-                <div class="col-8">
+                <div class="col-md-8 col-12">
                     <form
                         method="post"
                         action=""
@@ -98,9 +98,9 @@
                                 </span>
                             </div>
                             <input
-                                id="from-email"
-                                type="email"
-                                name="fromEmail"
+                                id="from-name"
+                                type="text"
+                                name="fromName"
                                 class="form-control"
                                 aria-describedby="Correo electronico para respuesta"
                                 placeholder="correo@ejemplo.com"
@@ -139,12 +139,28 @@
                         </button>
                     </form>
                 </div>
-                <div class="contactSocialNetwork col-4 text-right">
+                <div
+                    class="contactSocialNetwork d-none d-md-block col-md-4 col-12 text-right"
+                >
                     {{ informacionContacto.contactInfo }}
                     Redes sociales: <br />
                     <div class="mt-2">
                         {% for module in redesSociales.socialMedia.all() %} {%
                         include "_modules/" ~ module.type %} {% endfor %}
+                    </div>
+                </div>
+                <div
+                    class="contactSocialNetwork row mx-auto mt-4 d-md-none col-sm-11 col-12"
+                >
+                    <div class="">
+                        {{ informacionContacto.contactInfo }}
+                    </div>
+                    <div class="mx-sm-auto">
+                        Redes sociales: <br />
+                        <div class="mt-2">
+                            {% for module in redesSociales.socialMedia.all() %}
+                            {% include "_modules/" ~ module.type %} {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
