@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "230cf8475e80144bacb21333fb58366e",
+    "content-hash": "967503aa524132cbed632ed5590196b3",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -60,6 +60,66 @@
                 "markdown-extra"
             ],
             "time": "2018-03-26T11:24:36+00:00"
+        },
+        {
+            "name": "clarknelson/craft-recaptcha-3",
+            "version": "1.0.16",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clarknelson/craft-recaptcha-3/zipball/ef0183ef12b31d936d896f9f765fe6276b1fa09d",
+                "reference": "ef0183ef12b31d936d896f9f765fe6276b1fa09d",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.1.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Craft reCAPTCHA 3",
+                "handle": "craft-recaptcha-3",
+                "hasCpSettings": true,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/clarknelson/craft-recaptcha-3/master/CHANGELOG.md",
+                "class": "clarknelson\\craftrecaptcha3\\CraftRecaptcha3"
+            },
+            "autoload": {
+                "psr-4": {
+                    "clarknelson\\craftrecaptcha3\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clark Nelson",
+                    "homepage": "http://clarknelson.com"
+                }
+            ],
+            "description": "Verifies via Google the site and secret codes required to verify humanity through reCAPTCHA v3.",
+            "keywords": [
+                "anti-bot",
+                "anti-bots",
+                "anti-spam",
+                "captcha",
+                "cms",
+                "contact",
+                "craft",
+                "craft recaptcha 3",
+                "craft-plugin",
+                "craftcms",
+                "forms",
+                "google",
+                "recaptcha",
+                "security",
+                "spam",
+                "validation"
+            ],
+            "support": {
+                "docs": "https://github.com/clarknelson/craft-recaptcha-3/blob/master/README.md",
+                "issues": "https://github.com/clarknelson/craft-recaptcha-3/issues"
+            },
+            "time": "2020-02-27T22:46:02+00:00"
         },
         {
             "name": "clue/stream-filter",

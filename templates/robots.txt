@@ -1,0 +1,9 @@
+User-agent: *
+
+Disallow: /_modules/
+Disallow: /footer
+Disallow: /navbar
+Disallow: /.gitkeep
+Disallow: /resources/
+
+sitemap: http://www.adearco.org/sitemap.xml

@@ -7,6 +7,11 @@
             content="width=device-width, initial-scale=1, shirnk-to-fit=no"
         />
         <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"
+        ></script>
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -26,6 +31,12 @@
             {% if title is defined %}{{ title }} - {% endif %}{{ siteName }}
         </title>
         <link rel="icon" type="image/png" href="/resources/favicon.png" />
+
+        <script
+            src="https://www.google.com/recaptcha/api.js"
+            async
+            defer
+        ></script>
     </head>
     <body>
         {% include "navbar.twig" %}
@@ -49,10 +60,11 @@
             <div class="row">
                 <div class="col-md-8 col-12">
                     <form
+                        id="emailForm"
+                        name="emailForm"
                         method="post"
-                        action=""
                         accept-charset="UTF-8"
-                        class="needs-validation"
+                        class="needs-validation recaptchaForm"
                         novalidate
                     >
                         {{ csrfInput() }}
@@ -61,7 +73,7 @@
                             name="action"
                             value="contact-form/send"
                         />
-                        {{ redirectInput("/contacto?res=success") }}
+                        {# {{ redirectInput("/contacto?res=success") }} #}
 
                         <div class="input-group mb-4">
                             <div class="input-group-prepend">
@@ -98,9 +110,9 @@
                                 </span>
                             </div>
                             <input
-                                id="from-name"
-                                type="text"
-                                name="fromName"
+                                id="from-email"
+                                type="email"
+                                name="fromEmail"
                                 class="form-control"
                                 aria-describedby="Correo electronico para respuesta"
                                 placeholder="correo@ejemplo.com"
@@ -131,14 +143,49 @@
                                 Campo requerido
                             </div>
                         </div>
+
+                        <div
+                            class="g-recaptcha float-left col-12"
+                            data-sitekey="6LfdVOEUAAAAAD8nJe5eb96FrhQloORyEjAgXlQ-"
+                            style="display: inline-block;"
+                        ></div>
+                        <br />
+
                         <button
-                            type="submit"
-                            class="btn btn-primary float-right"
+                            type="button"
+                            class="btn btn-primary float-right mt-3 submit-button"
                         >
                             Enviar
                         </button>
                     </form>
                 </div>
+
+                <script>
+                    $(".submit-button").click(function() {
+                        var recaptcha = $("#g-recaptcha-response").val();
+                        if (recaptcha === "") {
+                            alert("Please check recaptcha");
+                        } else {
+                            var posting = $.post(
+                                "/_php/submit.php",
+                                {
+                                    secret:
+                                        "6LfdVOEUAAAAAK6C5RbPrHV0d5d0k6X6ot-LY7og",
+                                    response: recaptcha
+                                },
+                                function(response) {
+                                    var ans = JSON.parse(response);
+                                    if (ans.success) {
+                                        document
+                                            .getElementById("emailForm")
+                                            .submit();
+                                    }
+                                }
+                            );
+                        }
+                    });
+                </script>
+
                 <div
                     class="contactSocialNetwork d-none d-md-block col-md-4 col-12 text-right"
                 >

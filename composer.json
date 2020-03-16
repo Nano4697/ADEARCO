@@ -1,5 +1,6 @@
 {
   "require": {
+    "clarknelson/craft-recaptcha-3": "1.0.16",
     "craftcms/cms": "3.3.16.3",
     "craftcms/contact-form": "2.2.5",
     "craftcms/mailgun": "1.4.2",
